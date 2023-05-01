@@ -3,10 +3,10 @@ package routes
 import (
 	"net/http"
 
-	"github.com/yusrililhm/go-bookshelf-api/src/controller"
+	"github.com/yusrililhm/go-bookshelf-api/src/handler"
 )
 
 func Routes()  {
-	http.HandleFunc("/book", controller.Create)
-	http.HandleFunc("/books", controller.Read)
+	http.HandleFunc("/book", handler.Create)
+	http.HandleFunc("/books", handler.Read)
 }
