@@ -100,8 +100,6 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 			},
 		}
 
-		
-
 		encodes, err := json.Marshal(message)
 
 		if err != nil {
