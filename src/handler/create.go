@@ -34,6 +34,8 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 		insertedAt := update.Format(time.RFC1123)
 		updatedAt := insertedAt
 
+		// body request
+
 		name := r.FormValue("name")
 		year := r.FormValue("year")
 		author := r.FormValue("author")
@@ -43,10 +45,14 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 		readPage := r.FormValue("readPage")
 		reading := r.FormValue("reading")
 
+		// convert type from string
+
 		years, _ := strconv.Atoi(year)
 		pageCounts, _ := strconv.Atoi(pageCount)
 		readPages, _ := strconv.Atoi(readPage)
 		readings, _ := strconv.ParseBool(reading)
+
+		// finished = pageCount == readPage
 
 		finished := pageCounts == readPages
 
@@ -70,29 +76,31 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 			return
 		}
 
+		// error jika nama tidak dilampirkan
+
 		if payload.Name == "" {
 			http.Error(w, "Gagal menambahkan buku. Mohon isi nama", 400)
 			return
 		}
+
+		// error jika readCount > pageCount
 
 		if payload.ReadPage > payload.PageCount {
 			http.Error(w, "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount", 400)
 			return
 		}
 
-		encode, err := json.Marshal(payload.Id)
-
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
+		// response jika buku berhasil ditambahkan
 
 		message := map[string]interface{}{
 			"status": "success",
 			"message": "Buku berhasil ditambahkan",
 			"data": map[string]interface{}{
-				"id": encode,
+				"id": payload.Id,
 			},
 		}
+
+		
 
 		encodes, err := json.Marshal(message)
 
