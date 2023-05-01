@@ -4,9 +4,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/yusrililhm/go-bookshelf-api/src/routes"
 )
 
 func main() {
+	routes.Routes()
+
 	server := new(http.Server)
 	server.Addr = ":9000"
 

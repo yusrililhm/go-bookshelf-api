@@ -43,7 +43,7 @@ Objek buku yang disimpan pada server harus memiliki struktur seperti contoh di b
 
 Properti yang ditebalkan diolah dan didapatkan di sisi server. Berikut penjelasannya:
 
-    id : nilai id haruslah unik. Untuk membuat nilai unik, Anda bisa memanfaatkan nanoid.
+    id : nilai id haruslah unik. Untuk membuat nilai unik. [OK]
     finished : merupakan properti boolean yang menjelaskan apakah buku telah selesai dibaca atau belum. Nilai finished didapatkan dari observasi pageCount === readPage.
     insertedAt : merupakan properti yang menampung tanggal dimasukkannya buku. Anda bisa gunakan new Date().toISOString() untuk menghasilkan nilainya.
 
@@ -51,7 +51,7 @@ Properti yang ditebalkan diolah dan didapatkan di sisi server. Berikut penjelasa
 
 Server harus merespons gagal bila:
 
-    Client tidak melampirkan properti namepada request body. Bila hal ini terjadi, maka server akan merespons dengan:
+    Client tidak melampirkan properti name pada request body. Bila hal ini terjadi, maka server akan merespons dengan:
         Status Code : 400
 
         Response Body:
