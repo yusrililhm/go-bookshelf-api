@@ -73,7 +73,7 @@ Server harus merespons gagal bila:
 
 Bila buku berhasil dimasukkan, server harus mengembalikan respons dengan:
 
-    Status Code : 201
+    Status Code : 200
 
     Response Body:
 

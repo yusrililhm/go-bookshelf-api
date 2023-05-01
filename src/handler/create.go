@@ -80,13 +80,28 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 			return
 		}
 
-		encode, err := json.Marshal(payload)
+		encode, err := json.Marshal(payload.Id)
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
-		w.Write(encode)
+		message := map[string]interface{}{
+			"status": "success",
+			"message": "Buku berhasil ditambahkan",
+			"data": map[string]interface{}{
+				"id": encode,
+			},
+		}
+
+		encodes, err := json.Marshal(message)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.Write(encodes)
 		return
 	}
 	http.Error(w, err.Error(), 500)
