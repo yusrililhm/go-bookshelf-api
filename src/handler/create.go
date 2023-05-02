@@ -12,11 +12,12 @@ import (
 )
 
 func Create(w http.ResponseWriter, r *http.Request)  {
-	w.Header().Set("Content-Type", "applicatio/json")
-
+	
 	var err error
 	
 	if r.Method == "POST" {
+		
+		w.Header().Set("Content-Type", "application/json")
 
 		decode := json.NewDecoder(r.Body)
 
@@ -93,7 +94,7 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 		// response jika buku berhasil ditambahkan
 
 		message := map[string]interface{}{
-			"status": "success",
+			"status": http.StatusOK,
 			"message": "Buku berhasil ditambahkan",
 			"data": map[string]interface{}{
 				"id": payload.Id,
