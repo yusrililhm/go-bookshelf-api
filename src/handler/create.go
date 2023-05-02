@@ -80,21 +80,21 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 		// error jika nama tidak dilampirkan
 
 		if payload.Name == "" {
-			http.Error(w, "Gagal menambahkan buku. Mohon isi nama", 400)
+			ErrorJson(w, "Gagal menambahkan buku. Mohon isi nama", 400)
 			return
 		}
 
 		// error jika readCount > pageCount
 
 		if payload.ReadPage > payload.PageCount {
-			http.Error(w, "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount", 400)
+			ErrorJson(w, "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount", 400)
 			return
 		}
 
 		// response jika buku berhasil ditambahkan
 
 		message := map[string]interface{}{
-			"status": http.StatusOK,
+			"status": "success",
 			"message": "Buku berhasil ditambahkan",
 			"data": map[string]interface{}{
 				"id": payload.Id,
