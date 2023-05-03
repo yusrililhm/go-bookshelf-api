@@ -43,7 +43,7 @@ Objek buku yang disimpan pada server harus memiliki struktur seperti contoh di b
 
 Properti yang ditebalkan diolah dan didapatkan di sisi server. Berikut penjelasannya:
 
-    id          : nilai id haruslah unik. Untuk membuat nilai unik. [OK]
+    id          : nilai id haruslah unik. Untuk membuat nilai unik.
     finished    : merupakan properti boolean yang menjelaskan apakah buku telah selesai dibaca atau belum. Nilai finished didapatkan dari observasi pageCount === readPage.
     insertedAt  : merupakan properti yang menampung tanggal dimasukkannya buku. 
     updatedAt   : merupakan properti yang menampung tanggal diperbarui buku. Ketika buku baru dimasukkan, berikan nilai properti ini sama dengan insertedAt.
