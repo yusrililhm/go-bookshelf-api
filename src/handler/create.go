@@ -31,8 +31,8 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 		
 		// date manipulation
 
-		update := time.Now()
-		insertedAt := update.Format(time.RFC1123)
+		t := time.Now()
+		insertedAt := t.Format(time.RFC1123)
 		updatedAt := insertedAt
 
 		// body request
