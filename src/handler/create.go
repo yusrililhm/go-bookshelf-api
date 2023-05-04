@@ -81,14 +81,24 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 		// error jika nama tidak dilampirkan
 
 		if payload.Name == "" {
-			res.ErrorJson(w, "Gagal menambahkan buku. Mohon isi nama", 400)
+			message := map[string]interface{}{
+				"status": "fail",
+				"message": "Gagal menambahkan buku. Mohon isi nama buku",
+			}
+
+			res.ErrorJson(w, message, 400)
 			return
 		}
 
 		// error jika readCount > pageCount
 
 		if payload.ReadPage > payload.PageCount {
-			res.ErrorJson(w, "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount", 400)
+			message := map[string]interface{}{
+				"status": "fail",
+				"message": "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount",
+			}
+
+			res.ErrorJson(w, message, 400)
 			return
 		}
 
