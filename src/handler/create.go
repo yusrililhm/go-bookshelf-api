@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/yusrililhm/go-bookshelf-api/src/lib"
 	"github.com/yusrililhm/go-bookshelf-api/src/model"
+	"github.com/yusrililhm/go-bookshelf-api/src/res"
 )
 
 func Create(w http.ResponseWriter, r *http.Request)  {
@@ -81,14 +81,14 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 		// error jika nama tidak dilampirkan
 
 		if payload.Name == "" {
-			lib.ErrorJson(w, "Gagal menambahkan buku. Mohon isi nama", 400)
+			res.ErrorJson(w, "Gagal menambahkan buku. Mohon isi nama", 400)
 			return
 		}
 
 		// error jika readCount > pageCount
 
 		if payload.ReadPage > payload.PageCount {
-			lib.ErrorJson(w, "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount", 400)
+			res.ErrorJson(w, "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount", 400)
 			return
 		}
 
