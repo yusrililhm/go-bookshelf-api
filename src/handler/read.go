@@ -10,9 +10,35 @@ import (
 func Read(w http.ResponseWriter, r *http.Request)  {
 	w.Header().Set("Content-Type", "application/json")
 	if r.Method == "GET" {
-		data := model.Book{}
+		data := []model.Book{
+			{
+				Name: "momo",
+    		Year: 2022,
+    		Author: "momotaros",
+    		Summary: "lorem ipsum dolor sit amet",
+    		Publisher: "lorem",
+    		PageCount: 100,
+    		ReadPage: 50,
+    		Reading: false,
+			},
+			{
+				Name: "sana",
+    		Year: 2022,
+    		Author: "momotaros",
+    		Summary: "lorem ipsum dolor sit amet",
+    		Publisher: "lorem",
+    		PageCount: 100,
+    		ReadPage: 50,
+    		Reading: false,
+			},
+		}
 
-		encode, err := json.Marshal(data)
+		message := map[string]interface{}{
+			"status": "success",
+			"data": data,
+		}
+
+		encode, err := json.Marshal(message)
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
