@@ -78,6 +78,8 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 			return
 		}
 
+		// menampung data ke dalam slice
+
 		model.Books = []model.Book{}
 
 		model.Books = append(model.Books, payload)
