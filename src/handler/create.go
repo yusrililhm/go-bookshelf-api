@@ -78,6 +78,10 @@ func Create(w http.ResponseWriter, r *http.Request)  {
 			return
 		}
 
+		model.Books = []model.Book{}
+
+		model.Books = append(model.Books, payload)
+
 		// error jika nama tidak dilampirkan
 
 		if payload.Name == "" {
