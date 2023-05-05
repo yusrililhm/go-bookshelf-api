@@ -14,3 +14,5 @@ type Book struct {
 	InsertedAt string `json:"insertedAt"`
 	UpdateAt string `json:"updateAt"`
 }
+
+var Books = []Book{}
