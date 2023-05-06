@@ -9,4 +9,5 @@ import (
 func Routes()  {
 	http.HandleFunc("/book", handler.Create)
 	http.HandleFunc("/books", handler.Read)
+	http.HandleFunc("/booksId", handler.GetBookById)
 }
