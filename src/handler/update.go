@@ -1,7 +1,10 @@
 package handler
 
-import "net/http"
+import "github.com/gin-gonic/gin"
 
-func Update(w http.ResponseWriter, r *http.Request)  {
-	
+func UpdateBook(c *gin.Context)  {
+	c.JSON(200, gin.H{
+		"status": "success",
+		"message": "Buku berhasil diupdate",
+	})
 }

@@ -1,13 +1,16 @@
 package routes
 
-import (
-	"net/http"
-
-	"github.com/yusrililhm/go-bookshelf-api/src/handler"
-)
+import "github.com/gin-gonic/gin"
 
 func Routes()  {
-	http.HandleFunc("/book", handler.Create)
-	http.HandleFunc("/books", handler.Read)
-	http.HandleFunc("/booksId", handler.GetBookById)
+	r := gin.Default()
+
+	book := r.Group("book")
+	{
+		book.POST("/add", func(ctx *gin.Context) {})
+		book.GET("/books", func(ctx *gin.Context) {})
+		book.GET("/books{id}", func(ctx *gin.Context) {})
+		book.PUT("/update{id}", func(ctx *gin.Context) {})
+		book.DELETE("/delete{id}", func(ctx *gin.Context) {})
+	}
 }
