@@ -18,7 +18,9 @@ func AddBook(c *gin.Context)  {
 		c.JSON(200, gin.H{
 			"status": "success",
 			"message": "Buku berhasil ditambahkan",
-			"book": book.Id,
+			"book": map[string]any{
+				"id": book.Id,
+			},
 		})
 	}
 }
