@@ -12,7 +12,7 @@ type Book struct {
 	Reading bool `json:"reading"`
 	Finished bool `json:"finished"`
 	InsertedAt string `json:"insertedAt"`
-	UpdateAt string `json:"updateAt"`
+	UpdateAt string `json:"updatedAt"`
 }
 
 var Books = []Book{}
