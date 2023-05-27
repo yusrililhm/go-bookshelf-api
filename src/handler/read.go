@@ -7,8 +7,9 @@ import (
 
 func ReadAllBook(c *gin.Context)  {
 	c.JSON(200, gin.H{
+		"status": "success",
 		"data": map[string]any{
-			"book": model.Books,
+			"books": model.Books,
 		},
 	})
 }
