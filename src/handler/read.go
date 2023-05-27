@@ -27,8 +27,8 @@ func ReadBookById(c *gin.Context)  {
 			return
 		}
 	}
-	c.JSON(400, gin.H{
+	c.JSON(404, gin.H{
 		"status": "fail",
-		"message": "Buku tidak dapat ditemukan",
+		"message": "Buku tidak ditemukan",
 	})
 }
