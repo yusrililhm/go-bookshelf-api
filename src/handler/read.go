@@ -18,6 +18,7 @@ func ReadBookById(c *gin.Context)  {
 	for _, v := range model.Books {
 		if v.Id == id {
 			c.JSON(200, gin.H{
+				"status": "success",
 				"data": map[string]any{
 					"book": v,
 				},
