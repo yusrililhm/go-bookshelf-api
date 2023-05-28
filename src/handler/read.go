@@ -32,3 +32,22 @@ func ReadBookById(c *gin.Context)  {
 		"message": "Buku tidak ditemukan",
 	})
 }
+
+func GetAllReadingBook(c *gin.Context)  {
+	reading := c.GetBool("reading")
+	for _, v := range model.Books {
+		if v.Reading == reading {
+			c.JSON(200, gin.H{
+				"status": "success",
+				"data": map[string]any{
+					"book": v,
+				},
+			})
+			return
+		}
+	}
+	c.JSON(404, gin.H{
+		"status": "fail",
+		"message": "Buku tidak ditemukan",
+	})
+}
