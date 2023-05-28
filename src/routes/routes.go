@@ -27,6 +27,7 @@ func Routes()  {
 		book.POST("/books", handler.AddBook)
 		book.GET("/books", handler.ReadAllBook)
 		book.GET("/books/:id", handler.ReadBookById)
+		book.GET("/books:reading")
 		book.PUT("/books/:id", handler.UpdateBook)
 		book.DELETE("/books/:id", handler.DeleteBook)
 	}
