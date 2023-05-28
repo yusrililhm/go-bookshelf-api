@@ -24,6 +24,7 @@ func Routes()  {
 
 	book := r.Group("")
 	{
+		book.GET("/", func(ctx *gin.Context) {ctx.JSON(200, gin.H{"message": "hello world"})})
 		book.POST("/books", handler.AddBook)
 		book.GET("/books", handler.ReadAllBook)
 		book.GET("/books/:id", handler.ReadBookById)
