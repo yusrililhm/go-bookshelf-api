@@ -22,15 +22,13 @@ func Routes()  {
 		AllowHeaders: []string{"Content-Type", "application/json"},
 	}))
 
-	book := r.Group("")
+	book := r.Group("books")
 	{
-		book.GET("/", func(ctx *gin.Context) {ctx.JSON(200, gin.H{"message": "hello world"})})
-		book.POST("/books", handler.AddBook)
-		book.GET("/books", handler.ReadAllBook)
-		book.GET("/books/:id", handler.ReadBookById)
-		book.GET("/books:reading")
-		book.PUT("/books/:id", handler.UpdateBook)
-		book.DELETE("/books/:id", handler.DeleteBook)
+		book.POST("/", handler.AddBook)
+		book.GET("/", handler.ReadAllBook)
+		book.GET("/:id", handler.ReadBookById)
+		book.PUT("/:id", handler.UpdateBook)
+		book.DELETE("/:id", handler.DeleteBook)
 	}
 
 	r.Run(":" + port)
