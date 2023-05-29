@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yusrililhm/go-bookshelf-api/src/config"
 	"github.com/yusrililhm/go-bookshelf-api/src/model"
 )
 
@@ -52,6 +53,12 @@ func AddBook(c *gin.Context)  {
 		// response if add book success
 
 		model.Books = append(model.Books, book)
+
+		// insert into books
+
+		db := config.ConnectDB()
+		db.Create(&model.Books)
+
 		c.JSON(201, gin.H{
 			"status": "success",
 			"message": "Buku berhasil ditambahkan",

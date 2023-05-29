@@ -11,11 +11,11 @@ import (
 
 func ConnectDB() (*gorm.DB) {
 
-	user := GetEnv("USER")
+	user := GetEnv("USERS")
 	pass := GetEnv("PASS")
 	dbName := GetEnv("DBNAME")
 
-	conn := user + ":" + pass + "@tcp(127.0.0.1:3306)/" + dbName
+	conn := user + ":" + pass + "@tcp(localhost:3306)/" + dbName
 	db, err := gorm.Open(mysql.Open(conn), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err.Error())
