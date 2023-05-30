@@ -16,7 +16,6 @@ func DeleteBook(c *gin.Context)  {
 				"status": "success",
 				"message": "Buku berhasil dihapus",
 			})
-			c.Redirect(200, "/books/:id")
 			return
 		}
 	}
