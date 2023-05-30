@@ -59,12 +59,8 @@ func AddBook(c *gin.Context)  {
 		// insert into books
 
 		db := config.ConnectDB()
-<<<<<<< HEAD
 		db.AutoMigrate(&model.Book{})
-		db.Create(&model.Books)
-=======
 		db.Create(&books)
->>>>>>> 5871021 (update create.go)
 
 		c.JSON(201, gin.H{
 			"status": "success",
