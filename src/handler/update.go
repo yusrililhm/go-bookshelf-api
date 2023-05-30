@@ -13,6 +13,7 @@ func UpdateBook(c *gin.Context)  {
 				"status": "success",
 				"message": "Buku berhasil diupdate",
 			})
+			return
 		}
 	}
 }
