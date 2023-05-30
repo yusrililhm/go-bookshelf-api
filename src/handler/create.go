@@ -59,6 +59,7 @@ func AddBook(c *gin.Context)  {
 		// insert into books
 
 		db := config.ConnectDB()
+		db.AutoMigrate(&model.Book{})
 		db.Create(&books)
 
 		c.JSON(201, gin.H{
