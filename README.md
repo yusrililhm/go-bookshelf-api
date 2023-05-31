@@ -220,7 +220,7 @@ Server harus merespons gagal bila:
             "message": "Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount"
         }
 
-    Idyang dilampirkan oleh client tidak ditemukkan oleh server. Bila hal ini terjadi, maka server akan merespons dengan:
+    Id yang dilampirkan oleh client tidak ditemukkan oleh server. Bila hal ini terjadi, maka server akan merespons dengan:
         Status Code : 404
 
         Response Body:
