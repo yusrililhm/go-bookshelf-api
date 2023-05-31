@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/yusrililhm/go-bookshelf-api/src/config"
 	"github.com/yusrililhm/go-bookshelf-api/src/model"
@@ -33,6 +35,9 @@ func UpdateBook(c *gin.Context)  {
 		})
 		return
 	}
+	t := time.Now()
+	updatedAt := t.Format(time.RFC1123)
+	book.UpdateAt = updatedAt
 	db.Model(book).Updates(input)
 	c.JSON(200, gin.H{
 		"status": "success",
