@@ -15,7 +15,7 @@ func ConnectDB() (*gorm.DB) {
 	pass := GetEnv("PASS")
 	dbName := GetEnv("DBNAME")
 
-	conn := user + ":" + pass + "@tcp(localhost:3306)/" + dbName
+	conn := user + ":" + pass + "@tcp(localhost:3306)/" + dbName + "?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(conn), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err.Error())

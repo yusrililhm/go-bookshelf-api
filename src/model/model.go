@@ -1,5 +1,7 @@
 package model
 
+import "time"
+
 type Book struct {
 	Id string `json:"id" gorm:"primary_key"`
 	Name string `json:"name"`
@@ -11,8 +13,8 @@ type Book struct {
 	ReadPage int `json:"readPage"`
 	Reading bool `json:"reading"`
 	Finished bool `json:"finished"`
-	InsertedAt string `json:"insertedAt"`
-	UpdateAt string `json:"updatedAt"`
+	InsertedAt time.Time `json:"insertedAt"`
+	UpdateAt time.Time `json:"updatedAt"`
 }
 
 type Input struct {
