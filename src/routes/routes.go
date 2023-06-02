@@ -3,12 +3,15 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/yusrililhm/go-bookshelf-api/src/handler"
+	"gorm.io/gorm"
 )
 
-func Routes() *gin.Engine {
+func Routes(db *gorm.DB) *gin.Engine {
 	r := gin.Default()
 
-	// port
+	r.Use(func(ctx *gin.Context) {
+		ctx.Set("db", db)
+	})
 
 	book := r.Group("books")
 	{

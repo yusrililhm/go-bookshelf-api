@@ -6,10 +6,15 @@ import (
 )
 
 func main() {
+
+	// database setup
+
+	db := config.ConnectDB()
+
 	// server setup 
 
 	port := config.GetEnv("PORT")
-	r := routes.Routes()
+	r := routes.Routes(db)
 
 	// running server
 	r.Run(":" + port)

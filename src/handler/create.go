@@ -4,7 +4,6 @@ import (
 	"os/exec"
 	
 	"github.com/gin-gonic/gin"
-	"github.com/yusrililhm/go-bookshelf-api/src/config"
 	"github.com/yusrililhm/go-bookshelf-api/src/model"
 	"gorm.io/gorm"
 )
@@ -50,14 +49,10 @@ func AddBook(c *gin.Context)  {
 
 		// response if add book success
 
-		var books []model.Book
-
-		books = append(books, book)
-
 		// insert into books
 
-		db := config.ConnectDB()
-		db.Create(&books)
+		db := c.MustGet("db").(*gorm.DB)
+		db.Create(&book)
 
 		c.JSON(201, gin.H{
 			"status": "success",
