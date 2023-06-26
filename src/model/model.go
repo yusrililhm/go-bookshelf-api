@@ -27,5 +27,3 @@ type Input struct {
 	ReadPage int `json:"readPage"`
 	Reading bool `json:"reading"`
 }
-
-var Books = []Book{}

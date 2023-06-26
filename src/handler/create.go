@@ -2,7 +2,8 @@ package handler
 
 import (
 	"os/exec"
-	
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/yusrililhm/go-bookshelf-api/src/model"
 	"gorm.io/gorm"
@@ -18,6 +19,9 @@ func AddBook(c *gin.Context)  {
 	// date time format
 
 	var m gorm.Model
+
+	m.CreatedAt = time.Now()
+	m.UpdatedAt = m.CreatedAt
 
 	book = model.Book{Id: string(id), InsertedAt: m.CreatedAt, UpdateAt: m.CreatedAt}
 

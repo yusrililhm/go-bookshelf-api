@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/yusrililhm/go-bookshelf-api/src/model"
 	"gorm.io/gorm"
@@ -18,6 +20,7 @@ func UpdateBook(c *gin.Context)  {
 	}
 
 	var input model.Input
+
 	if err := c.Bind(&input); err != nil {
 		return
 	} else if input.Name == "" {
@@ -36,8 +39,10 @@ func UpdateBook(c *gin.Context)  {
 
 	var m gorm.Model
 
+	m.CreatedAt = time.Now()
+
 	book.UpdateAt = m.UpdatedAt
-	db.Model(book).Updates(input)
+	db.Model(&book).Updates(input)
 	c.JSON(200, gin.H{
 		"status": "success",
 		"message": "Buku berhasil diperbarui",
